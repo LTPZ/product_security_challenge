@@ -1,32 +1,17 @@
-# Zendesk Product Security
-### The Zendesk Product Security Challenge
+Please read this readme file first as a small user guide.
 
-Hello friend,
+Files added/updated:
+1. index.js&index.html: removed remember me option (as it is not implemented), create account function and forget password function is working now. To use them, user just need to click the respective link.
+   index.js now supports log in function. User can key in their username and password to log in their accounts. Upon successful login, user will see alert successfully logged in. If the password/username is incorrect/does not exist, the user will see an alert showing incorrect username/password.
+   The lockout function is implemented. If the user tried 10 times but failed to log in one certain account, it will be locked and can only log in through resetting the password.
+2. createAccount.js&createAccount.html: username, password, security quesiton and answer for resetting password is required to create a new account. If the account does not exist, the system will create a new account.
+3. forget.js&forget.html: at least need to key in username and new password first. If the user know the answer to their security questions they can key in the answer as well. Otherwise the system will show the security question of the account. If user answered the question correctly, the account password will be updated. No lockout is implemented here as it is the last method to unlock the account.
 
-We are super excited that you want to be part of the Product Security team at Zendesk.
+What has been implemented here:
+1. Input sanitization and validation: checking if there are dangerous inputs like "<"">""\""/"
+2. Prevention of timing attacks: through random waiting time for each execution
+3. Logging
+4. Password reset / forget password mechanism
+5. Account lockout: achieved by accumulating failed attempts for one account, however, in a real life system this is not realistic, because attackers can use this to lock someone else's account. This is just an idea of how to solve this problem. In real life, we need to store the number of attemps in the Cookie.
+6. Known password check
 
-**To get started, you need to fork this repository to your own Github profile and work off that copy.**
-
-In this repository, there are the following files:
-1. README.md - this file
-2. project/ - the folder containing all the files that you require to get started
-3. project/index.html - the main HTML file containing the login form
-4. project/assets/ - the folder containing supporting assets such as images, JavaScript files, Cascading Style Sheets, etc. You shouldn’t need to make any changes to these but you are free to do so if you feel it might help your submission
-
-As part of the challenge, you need to implement an authentication mechanism with as many of the following features as possible. It is a non exhaustive list, so feel free to add or remove any of it as deemed necessary.
-
-1. Input sanitization and validation
-2. Password hashed
-3. Prevention of timing attacks
-4. Logging
-5. CSRF prevention
-6. Multi factor authentication
-7. Password reset / forget password mechanism
-8. Account lockout
-9. Cookie
-10. HTTPS
-11. Known password check
-
-You will have to create a simple binary (platform of your choice) to provide any server side functionality you may require. Please document steps to run the application. Your submission should be a link to your Github repository which you've already forked earlier together with the source code and binaries.
-
-Thank you!
